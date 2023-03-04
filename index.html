@@ -19,12 +19,13 @@
     ></script>
 
     <link rel="stylesheet" href="src/style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container">
-      <div class="leftSideBar">
-        <h5 class="subheading">
+      <div class="leftSide">
+        <h5 class="title">
           <img
             class="mb-2"
             src="https://icon-library.com/images/google-weather-icon/google-weather-icon-8.jpg"
@@ -35,221 +36,204 @@
       </div>
 
       <div class="main">
-        <div class="main__container">
-          <div class="header__container">
-            <div class="sidebar__container">
-              <form class="input__form" id="search-form">
-                <input
-                  id="searchInput"
-                  type="text"
-                  name="searchInput"
-                  placeholder="Search for a city"
+        <div class="main-wrapper">
+          <form id="search-form">
+            <input
+              id="search-input"
+              type="search"
+              placeholder="Search for a city"
+            />
+            <button id="search-btn" type="submit">
+              <svg
+                height="14"
+                viewBox="0 10 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M221.09,64A157.09,157.09,0,1,0,378.18,221.09,157.1,157.1,0,0,0,221.09,64Z"
+                  style="
+                    fill: none;
+                    stroke: #000;
+                    stroke-miterlimit: 10;
+                    stroke-width: 40;
+                  "
                 />
-                <button id="searchSubmit" type="submit" name="searchSubmit">
-                  <svg
-                    height="14"
-                    viewBox="0 10 512 512"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M221.09,64A157.09,157.09,0,1,0,378.18,221.09,157.1,157.1,0,0,0,221.09,64Z"
-                      style="
-                        fill: none;
-                        stroke: #000;
-                        stroke-miterlimit: 10;
-                        stroke-width: 40;
-                      "
-                    />
-                    <line
-                      x1="338"
-                      x2="448"
-                      y1="338"
-                      y2="448"
-                      style="
-                        fill: none;
-                        stroke: #000;
-                        stroke-linecap: round;
-                        stroke-miterlimit: 10;
-                        stroke-width: 40;
-                      "
-                    />
-                  </svg>
-                </button>
+                <line
+                  x1="338"
+                  x2="448"
+                  y1="338"
+                  y2="448"
+                  style="
+                    fill: none;
+                    stroke: #000;
+                    stroke-linecap: round;
+                    stroke-miterlimit: 10;
+                    stroke-width: 40;
+                  "
+                />
+              </svg>
+            </button>
 
-                <button class="current_location" id="current-location">
-                  <svg
-                    height="11"
-                    viewBox="0 0 50 50"
-                    width="15"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M40,17  c0,13.604-15,31-15,31S10,30.928,10,17c0-8.285,6.715-15,15-15C33.284,2,40,8.715,40,17z"
-                      style="
-                        fill: none;
-                        stroke: #000;
-                        stroke-linejoin: round;
-                        stroke-miterlimit: 10;
-                        stroke-width: 4;
-                      "
-                    />
-                    <circle
-                      cx="25"
-                      cy="18"
-                      style="
-                        fill: none;
-                        r: 6;
-                        stroke: #000;
-                        stroke-linejoin: round;
-                        stroke-miterlimit: 10;
-                        stroke-width: 4;
-                      "
-                    />
-                  </svg>
-                </button>
-              </form>
+            <button id="current-location">
+              <svg
+                height="11"
+                viewBox="0 0 50 50"
+                width="15"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M40,17  c0,13.604-15,31-15,31S10,30.928,10,17c0-8.285,6.715-15,15-15C33.284,2,40,8.715,40,17z"
+                  style="
+                    fill: none;
+                    stroke: #000;
+                    stroke-linejoin: round;
+                    stroke-miterlimit: 10;
+                    stroke-width: 4;
+                  "
+                />
+                <circle
+                  cx="25"
+                  cy="18"
+                  style="
+                    fill: none;
+                    r: 6;
+                    stroke: #000;
+                    stroke-linejoin: round;
+                    stroke-miterlimit: 10;
+                    stroke-width: 4;
+                  "
+                />
+              </svg>
+            </button>
+          </form>
 
-              <div class="row">
-                <div class="col">
-                  <h1>Madrid</h1>
-                  <p>Saturday, 12:50</p>
+          <div class="row">
+            <div class="col">
+              <h1 id="city"></h1>
+              <p id="date"></p>
 
-                  <div class="weather_temperature">
-                    <span id="temperature">15</span>
-                    <span class="unit">ºC</span>
-                  </div>
-                </div>
-
-                <div class="col weather_condition">
-                  <p id="weather_description">Scattered Clouds</p>
-                  <div id="emoji" class="emoji">🌧</div>
-                </div>
+              <div class="weather-temperature">
+                <span id="temperature"></span>
+                <span id="units">ºC</span>
               </div>
+            </div>
 
-              <p class="main_subheading">Today's Forecast</p>
-              <div class="row">
-                <div class="col card forecast_wrapper">
-                  <p>2:00</p>
-                  <p class="icon">🌤</p>
-                  <p class="dailyTemp">
-                    5º <span class="temperature_min">3º</span>
-                  </p>
-                </div>
+            <div class="col weather-condition">
+              <p id="description"></p>
+              <div id="main-icon">🌧</div>
+            </div>
+          </div>
 
-                <div class="col card forecast_wrapper">
-                  <p>3:00</p>
-                  <p class="icon">☀️</p>
-                  <p class="dailyTemp">
-                    4º <span class="temperature_min">2º</span>
-                  </p>
-                </div>
+          <p class="main-subheading">Today's Forecast</p>
+          <div class="row">
+            <div class="col card">
+              <p id="hour">2:00</p>
+              <p id="icon">🌤</p>
+              <p id="hourly-temperature">5º</p>
+            </div>
 
-                <div class="col card forecast_wrapper">
-                  <p>4:00</p>
-                  <p class="icon">☀️</p>
-                  <p class="dailyTemp">
-                    4º <span class="temperature_min">2º</span>
-                  </p>
-                </div>
+            <div class="col card">
+              <p id="hour">3:00</p>
+              <p id="icon">☀️</p>
+              <p id="hourly-temperature">4º</p>
+            </div>
 
-                <div class="col card forecast_wrapper">
-                  <p>5:00</p>
-                  <p class="icon">🌤</p>
-                  <p class="dailyTemp">
-                    3º <span class="temperature_min">1º</span>
-                  </p>
-                </div>
+            <div class="col card">
+              <p id="hour">4:00</p>
+              <p id="icon">☀️</p>
+              <p id="hourly-temperature">4º</p>
+            </div>
 
-                <div class="col card forecast_wrapper">
-                  <p>6:00</p>
-                  <p class="icon">🌤</p>
-                  <p class="dailyTemp">
-                    6º <span class="temperature_min">4º</span>
-                  </p>
-                </div>
+            <div class="col card">
+              <p id="hour">5:00</p>
+              <p id="icon">🌤</p>
+              <p id="hourly-temperature">3º</p>
+            </div>
 
-                <div class="col card forecast_wrapper">
-                  <p>7:00</p>
-                  <p class="icon">🌤</p>
-                  <p class="dailyTemp">
-                    7º <span class="temperature_min">0º</span>
-                  </p>
-                </div>
-              </div>
+            <div class="col card">
+              <p id="hour">6:00</p>
+              <p id="icon">🌤</p>
+              <p id="hourly-temperature">6º</p>
+            </div>
 
-              <p class="main_subheading">Week's Forecast</p>
-              <div class="row">
-                <div class="col card forecast_wrapper">
-                  <p>Monday</p>
-                  <p class="icon">🌤</p>
-                  <p class="dailyTemp">
-                    5º <span class="temperature_min">3º</span>
-                  </p>
-                </div>
+            <div class="col card">
+              <p id="hour">7:00</p>
+              <p id="icon">🌤</p>
+              <p id="hourly-temperature">7º</p>
+            </div>
+          </div>
 
-                <div class="col card forecast_wrapper">
-                  <p>Tuesday</p>
-                  <p class="icon">☀️</p>
-                  <p class="dailyTemp">
-                    4º <span class="temperature_min">2º</span>
-                  </p>
-                </div>
+          <p class="main-subheading">Week's Forecast</p>
+          <div class="row">
+            <div class="col card">
+              <p id="day-of-week">Monday</p>
+              <p id="icon">🌤</p>
+              <p id="temperature-max">
+                5º <span id="temperature-min">3º</span>
+              </p>
+            </div>
 
-                <div class="col card forecast_wrapper">
-                  <p>Wednesday</p>
-                  <p class="icon">☀️</p>
-                  <p class="dailyTemp">
-                    4º <span class="temperature_min">2º</span>
-                  </p>
-                </div>
+            <div class="col card">
+              <p id="day-of-week">Tuesday</p>
+              <p id="icon">☀️</p>
+              <p id="temperature-max">
+                4º <span id="temperature-min">2º</span>
+              </p>
+            </div>
 
-                <div class="col card forecast_wrapper">
-                  <p>Thursday</p>
-                  <p class="icon">🌤</p>
-                  <p class="dailyTemp">
-                    3º <span class="temperature_min">1º</span>
-                  </p>
-                </div>
+            <div class="col card">
+              <p id="day-of-week">Wednesday</p>
+              <p id="icon">☀️</p>
+              <p id="temperature-max">
+                4º <span id="temperature-min">2º</span>
+              </p>
+            </div>
 
-                <div class="col card forecast_wrapper">
-                  <p>Friday</p>
-                  <p class="icon">🌤</p>
-                  <p class="dailyTemp">
-                    6º <span class="temperature_min">4º</span>
-                  </p>
-                </div>
+            <div class="col card">
+              <p id="day-of-week">Thursday</p>
+              <p id="icon">🌤</p>
+              <p id="temperature-max">
+                3º <span id="temperature-min">1º</span>
+              </p>
+            </div>
 
-                <div class="col card forecast_wrapper">
-                  <p>Saturday</p>
-                  <p class="icon">🌤</p>
-                  <p class="dailyTemp">
-                    7º <span class="temperature_min">0º</span>
-                  </p>
-                </div>
-              </div>
+            <div class="col card">
+              <p id="day-of-week">Friday</p>
+              <p id="icon">🌤</p>
+              <p id="temperature-max">
+                6º <span id="temperature-min">4º</span>
+              </p>
+            </div>
+
+            <div class="col card">
+              <p id="day-of-week">Saturday</p>
+              <p id="icon">🌤</p>
+              <p id="temperature-max">
+                7º <span id="temperature-min">0º</span>
+              </p>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="rightSideBar">
+      <div class="rightSide">
         <h5 class="subheading">AIR CONDITIONS</h5>
-        <div class="conditions">
-          <div class="conditions_card">
-            <div class="conditions_heading">Wind</div>
-            <div class="conditions_body" id="wind">5 km/h</div>
+        <div class="weather-conditions-wrapper">
+          <div class="weather-conditions-card">
+            <div class="weather-conditions-heading">Wind</div>
+            <div class="weather-conditions-body" id="wind">5 km/h</div>
           </div>
-          <div class="conditions_card">
-            <div class="conditions_heading">Humidity</div>
-            <div class="conditions_body" id="humidity">12%</div>
+          <div class="weather-conditions-card">
+            <div class="weather-conditions-heading">Humidity</div>
+            <div class="weather-conditions-body" id="humidity">12%</div>
           </div>
-          <div class="conditions_card">
-            <div class="conditions_heading">Pressure</div>
-            <div class="conditions_body" id="pressure">1018</div>
+          <div class="weather-conditions-card">
+            <div class="weather-conditions-heading">Pressure</div>
+            <div class="weather-conditions-body" id="pressure">1018</div>
           </div>
-          <div class="conditions_card">
-            <div class="conditions_heading">Visibility</div>
-            <div class="conditions_body" id="visibility">7 km</div>
+          <div class="weather-conditions-card">
+            <div class="weather-conditions-heading">Visibility</div>
+            <div class="weather-conditions-body" id="visibility">7 km</div>
           </div>
         </div>
       </div>
@@ -260,15 +244,11 @@
         This project was coded by Salmah Abdullahi and is open-sourced on
         <a
           href="https://github.com/Salmah1/Weather-application-api.git"
-          class="footer-link"
           target="_blank"
           >Github</a
         >
         and hosted on
-        <a
-          href="https://superlative-pika-b1ebf1.netlify.app"
-          class="footer-link"
-          target="_blank"
+        <a href="https://superlative-pika-b1ebf1.netlify.app" target="_blank"
           >Netlify</a
         >
       </p>
