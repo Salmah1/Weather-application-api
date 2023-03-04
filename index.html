@@ -164,55 +164,7 @@
           </div>
 
           <p class="main-subheading">Week's Forecast</p>
-          <div class="row">
-            <div class="col card">
-              <p id="day-of-week">Monday</p>
-              <p id="icon">🌤</p>
-              <p id="temperature-max">
-                5º <span id="temperature-min">3º</span>
-              </p>
-            </div>
-
-            <div class="col card">
-              <p id="day-of-week">Tuesday</p>
-              <p id="icon">☀️</p>
-              <p id="temperature-max">
-                4º <span id="temperature-min">2º</span>
-              </p>
-            </div>
-
-            <div class="col card">
-              <p id="day-of-week">Wednesday</p>
-              <p id="icon">☀️</p>
-              <p id="temperature-max">
-                4º <span id="temperature-min">2º</span>
-              </p>
-            </div>
-
-            <div class="col card">
-              <p id="day-of-week">Thursday</p>
-              <p id="icon">🌤</p>
-              <p id="temperature-max">
-                3º <span id="temperature-min">1º</span>
-              </p>
-            </div>
-
-            <div class="col card">
-              <p id="day-of-week">Friday</p>
-              <p id="icon">🌤</p>
-              <p id="temperature-max">
-                6º <span id="temperature-min">4º</span>
-              </p>
-            </div>
-
-            <div class="col card">
-              <p id="day-of-week">Saturday</p>
-              <p id="icon">🌤</p>
-              <p id="temperature-max">
-                7º <span id="temperature-min">0º</span>
-              </p>
-            </div>
-          </div>
+          <div class="week-weather-forecast" id="week-weather-forecast"></div>
         </div>
       </div>
 
@@ -221,19 +173,27 @@
         <div class="weather-conditions-wrapper">
           <div class="weather-conditions-card">
             <div class="weather-conditions-heading">Wind</div>
-            <div class="weather-conditions-body" id="wind">5 km/h</div>
+            <div class="weather-conditions-body">
+              <span id="wind"></span> km/h
+            </div>
           </div>
           <div class="weather-conditions-card">
             <div class="weather-conditions-heading">Humidity</div>
-            <div class="weather-conditions-body" id="humidity">12%</div>
+            <div class="weather-conditions-body">
+              <span id="humidity"></span>%
+            </div>
           </div>
           <div class="weather-conditions-card">
             <div class="weather-conditions-heading">Pressure</div>
-            <div class="weather-conditions-body" id="pressure">1018</div>
+            <div class="weather-conditions-body">
+              <span id="pressure"></span>
+            </div>
           </div>
           <div class="weather-conditions-card">
             <div class="weather-conditions-heading">Visibility</div>
-            <div class="weather-conditions-body" id="visibility">7 km</div>
+            <div class="weather-conditions-body">
+              <span id="visibility"></span> km
+            </div>
           </div>
         </div>
       </div>
