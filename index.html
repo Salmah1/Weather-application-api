@@ -24,158 +24,160 @@
   </head>
   <body>
     <div class="container">
-      <div class="leftSide">
-        <h5 class="title">
-          <img
-            class="mb-2"
-            src="https://icon-library.com/images/google-weather-icon/google-weather-icon-8.jpg"
-            alt="weather icon"
-            width="20"
-          />WEATHER
-        </h5>
-      </div>
+      <div class="weather-app-wrapper">
+        <div class="leftSide">
+          <h5 class="title">
+            <img
+              class="mb-2"
+              src="https://icon-library.com/images/google-weather-icon/google-weather-icon-8.jpg"
+              alt="weather icon"
+              width="20"
+            />WEATHER
+          </h5>
+        </div>
 
-      <div class="main">
-        <div class="main-wrapper">
-          <form id="search-form">
-            <input
-              id="search-input"
-              type="search"
-              placeholder="Search for a city"
-            />
-            <button id="search-btn" type="submit">
-              <svg
-                height="14"
-                viewBox="0 10 512 512"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M221.09,64A157.09,157.09,0,1,0,378.18,221.09,157.1,157.1,0,0,0,221.09,64Z"
-                  style="
-                    fill: none;
-                    stroke: #000;
-                    stroke-miterlimit: 10;
-                    stroke-width: 40;
-                  "
-                />
-                <line
-                  x1="338"
-                  x2="448"
-                  y1="338"
-                  y2="448"
-                  style="
-                    fill: none;
-                    stroke: #000;
-                    stroke-linecap: round;
-                    stroke-miterlimit: 10;
-                    stroke-width: 40;
-                  "
-                />
-              </svg>
-            </button>
+        <div class="main">
+          <div class="main-wrapper">
+            <form id="search-form">
+              <input
+                id="search-input"
+                type="search"
+                placeholder="Search for a city"
+              />
+              <button id="search-btn" type="submit">
+                <svg
+                  height="14"
+                  viewBox="0 10 512 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M221.09,64A157.09,157.09,0,1,0,378.18,221.09,157.1,157.1,0,0,0,221.09,64Z"
+                    style="
+                      fill: none;
+                      stroke: #000;
+                      stroke-miterlimit: 10;
+                      stroke-width: 40;
+                    "
+                  />
+                  <line
+                    x1="338"
+                    x2="448"
+                    y1="338"
+                    y2="448"
+                    style="
+                      fill: none;
+                      stroke: #000;
+                      stroke-linecap: round;
+                      stroke-miterlimit: 10;
+                      stroke-width: 40;
+                    "
+                  />
+                </svg>
+              </button>
 
-            <button id="current-location">
-              <svg
-                height="11"
-                viewBox="0 0 50 50"
-                width="15"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M40,17  c0,13.604-15,31-15,31S10,30.928,10,17c0-8.285,6.715-15,15-15C33.284,2,40,8.715,40,17z"
-                  style="
-                    fill: none;
-                    stroke: #000;
-                    stroke-linejoin: round;
-                    stroke-miterlimit: 10;
-                    stroke-width: 4;
-                  "
-                />
-                <circle
-                  cx="25"
-                  cy="18"
-                  style="
-                    fill: none;
-                    r: 6;
-                    stroke: #000;
-                    stroke-linejoin: round;
-                    stroke-miterlimit: 10;
-                    stroke-width: 4;
-                  "
-                />
-              </svg>
-            </button>
-          </form>
+              <button id="current-location">
+                <svg
+                  height="11"
+                  viewBox="0 0 50 50"
+                  width="15"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M40,17  c0,13.604-15,31-15,31S10,30.928,10,17c0-8.285,6.715-15,15-15C33.284,2,40,8.715,40,17z"
+                    style="
+                      fill: none;
+                      stroke: #000;
+                      stroke-linejoin: round;
+                      stroke-miterlimit: 10;
+                      stroke-width: 4;
+                    "
+                  />
+                  <circle
+                    cx="25"
+                    cy="18"
+                    style="
+                      fill: none;
+                      r: 6;
+                      stroke: #000;
+                      stroke-linejoin: round;
+                      stroke-miterlimit: 10;
+                      stroke-width: 4;
+                    "
+                  />
+                </svg>
+              </button>
+            </form>
 
-          <div class="row">
-            <div class="col">
-              <h1 id="city"></h1>
-              <p id="date"></p>
+            <div class="row">
+              <div class="col">
+                <h1 id="city"></h1>
+                <p id="date"></p>
 
-              <div class="weather-temperature">
-                <span id="temperature"></span>
-                <span id="units">ºC</span>
+                <div class="weather-temperature">
+                  <span id="temperature"></span>
+                  <span id="units">ºC</span>
+                </div>
+              </div>
+
+              <div class="col weather-condition">
+                <p id="description" class="mb-0"></p>
+                <img src="" alt="weather icon" id="main-icon" />
               </div>
             </div>
 
-            <div class="col weather-condition">
-              <p id="description" class="mb-0"></p>
-              <img src="" alt="weather icon" id="main-icon" />
-            </div>
+            <p class="main-subheading">Today's Forecast</p>
+            <div class="hourly-forecast" id="hourly-forecast"></div>
+
+            <p class="main-subheading">Week's Forecast</p>
+            <div class="daily-forecast" id="daily-forecast"></div>
           </div>
-
-          <p class="main-subheading">Today's Forecast</p>
-          <div class="hourly-forecast" id="hourly-forecast"></div>
-
-          <p class="main-subheading">Week's Forecast</p>
-          <div class="daily-forecast" id="daily-forecast"></div>
         </div>
-      </div>
 
-      <div class="rightSide">
-        <h5 class="subheading">AIR CONDITIONS</h5>
-        <div class="weather-conditions-wrapper">
-          <div class="weather-conditions-card">
-            <div class="weather-conditions-heading">Wind</div>
-            <div class="weather-conditions-body">
-              <span id="wind"></span> km/h
+        <div class="rightSide">
+          <h5 class="subheading">AIR CONDITIONS</h5>
+          <div class="weather-conditions-wrapper">
+            <div class="weather-conditions-card">
+              <div class="weather-conditions-heading">Wind</div>
+              <div class="weather-conditions-body">
+                <span id="wind"></span> km/h
+              </div>
             </div>
-          </div>
-          <div class="weather-conditions-card">
-            <div class="weather-conditions-heading">Humidity</div>
-            <div class="weather-conditions-body">
-              <span id="humidity"></span>%
+            <div class="weather-conditions-card">
+              <div class="weather-conditions-heading">Humidity</div>
+              <div class="weather-conditions-body">
+                <span id="humidity"></span>%
+              </div>
             </div>
-          </div>
-          <div class="weather-conditions-card">
-            <div class="weather-conditions-heading">Pressure</div>
-            <div class="weather-conditions-body">
-              <span id="pressure"></span>
+            <div class="weather-conditions-card">
+              <div class="weather-conditions-heading">Pressure</div>
+              <div class="weather-conditions-body">
+                <span id="pressure"></span>
+              </div>
             </div>
-          </div>
-          <div class="weather-conditions-card">
-            <div class="weather-conditions-heading">Visibility</div>
-            <div class="weather-conditions-body">
-              <span id="visibility"></span> km
+            <div class="weather-conditions-card">
+              <div class="weather-conditions-heading">Visibility</div>
+              <div class="weather-conditions-body">
+                <span id="visibility"></span> km
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="footer">
-      <p>
-        This project was coded by Salmah Abdullahi and is open-sourced on
-        <a
-          href="https://github.com/Salmah1/Weather-application-api.git"
-          target="_blank"
-          >Github</a
-        >
-        and hosted on
-        <a href="https://superlative-pika-b1ebf1.netlify.app" target="_blank"
-          >Netlify</a
-        >
-      </p>
+      <div class="footer">
+        <p>
+          This project was coded by Salmah Abdullahi and is open-sourced on
+          <a
+            href="https://github.com/Salmah1/Weather-application-api.git"
+            target="_blank"
+            >Github</a
+          >
+          and hosted on
+          <a href="https://superlative-pika-b1ebf1.netlify.app" target="_blank"
+            >Netlify</a
+          >.
+        </p>
+      </div>
     </div>
 
     <script src="src/app.js"></script>
